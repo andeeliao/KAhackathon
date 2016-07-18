@@ -1,0 +1,30 @@
+{
+  "manifest_version": 2,
+
+  "name": "KA confusion tracker",
+  "description": "This extension sends the time and URL of the current video",
+  "version": "0.0",
+
+  "browser_action": {
+    "default_title": "Click here!"
+  },
+  "permissions": [
+    "activeTab",
+    "contentSettings",
+    "<all_urls>",
+    "tabs",
+    "http://localhost:8080/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["get_info.js"],
+      "all_frames":true,
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "scripts": ["jquery.js", "record.js"],
+    "persistent": false
+  }
+}
